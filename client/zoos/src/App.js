@@ -5,6 +5,17 @@ import './App.css';
 export default function App() {
   const [zoos, setZoos] = useState([]);
 
+  const deleteZoo = id => {
+    axios
+      .delete(`https://zoos-app.herokuapp.com/api/zoos/${id}`)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
   useEffect(() => {
     (async function getData() {
       try {
@@ -14,13 +25,16 @@ export default function App() {
         console.log(error);
       }
     })();
-  }, []);
+  }, [zoos]);
 
   return (
     <div className="App">
       <h1>Zoos:</h1>
       {zoos.map(zoo => (
-        <h3 key={zoo.id}>{zoo.name}</h3>
+        <>
+          <h3 key={zoo.id}>{zoo.name}</h3>
+          <button onClick={() => deleteZoo(zoo.id)}>delete</button>
+        </>
       ))}
     </div>
   );
