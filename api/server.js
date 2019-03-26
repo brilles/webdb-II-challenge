@@ -10,6 +10,12 @@ const server = express();
 server.use(helmet());
 server.use(express.json());
 
+server.get('/', (req, res) => {
+  res.send(
+    '<p> <a href="https://zoos-app.herokuapp.com/api/zoos">zoos</a> or <a href="https://zoos-app.herokuapp.com/api/bears">bears</a></p>'
+  );
+});
+
 server.use('/api/zoos', zoosRouter);
 server.use('/api/bears', bearsRouter);
 

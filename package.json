@@ -2,6 +2,7 @@
   "name": "relationapimini",
   "version": "1.0.0",
   "description": "RDBMS API Mini Sprint",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
